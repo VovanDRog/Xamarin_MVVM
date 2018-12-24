@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Xamarin_04_01.Views.StudentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                VerticalOptions="Start">
+                <ListView
+                    x:Name="studentsList"
+                    HasUnevenRows="True"
+                    ItemsSource="{Binding Students}"
+                    SelectedItem="{Binding SelectedStudent, Mode=TwoWay}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout
+                                        Padding="20,0">
+                                        <Label
+                                            FontSize="Medium"
+                                            Text="{Binding Surname, StringFormat='Прізвище = {0}'}" />
+                                        <Label
+                                            FontSize="Small"
+                                            Text="{Binding PhysicScore}" />
+                                        <Label
+                                            FontSize="Small"
+                                            Text="{Binding MathScore}" />
+                                        <Label
+                                            FontSize="Small"
+                                            Text="{Binding InfScore}" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+                <Label
+                    Text="Прізвище" />
+                <Entry
+                    FontSize="Medium"
+                    Text="{Binding Surname}" />
+                <Label
+                    Text="Оцінки" />
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Entry
+                        FontSize="Medium"
+                        Keyboard="Numeric"
+                        Placeholder="Фізика"
+                        Text="{Binding PhysicScore}" />
+                    <Entry
+                        FontSize="Medium"
+                        Keyboard="Numeric"
+                        Placeholder="Фізика"
+                        Text="{Binding MathScore}" />
+                    <Entry
+                        FontSize="Medium"
+                        Keyboard="Numeric"
+                        Placeholder="Фізика"
+                        Text="{Binding InfScore}" />
+                </StackLayout>
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Command="{Binding AddStudentCommand}"
+                        Text="Додати" />
+                    <Button
+                        Command="{Binding DeleteStudentCommand}"
+                        Text="Видалити" />
+                </StackLayout>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
